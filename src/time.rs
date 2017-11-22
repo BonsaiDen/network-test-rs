@@ -22,6 +22,7 @@ static AVERAGE_SIZE: usize = 16;
 
 
 // Timer Abstraction ----------------------------------------------------------
+// TODO rename into state or something else?
 pub struct Timer {
     tick: u8,
     ticks_per_second: u8,
@@ -75,6 +76,7 @@ impl Timer {
         }
     }
 
+    // TODO callback for client side configuration?
     pub fn receive(&mut self, messages: Vec<InternalMessage>) -> Vec<InternalMessage> {
 
         let now = precise_time_ms();

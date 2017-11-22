@@ -72,11 +72,11 @@ impl<P: Protocol, M: Serialize + DeserializeOwned, D> Server<P, M, D> {
             if let Some(listener) = self.listener.as_mut() {
                 while let Ok(mut connection) = listener.accept() {
                     if let Some(data) = data(connection.peer_addr().unwrap()) {
-                        self.remotes.push((Remote::from_connection(
+                        let remote = Remote::from_connection(
                             connection,
                             self.timer.clone()
-
-                        ), data));
+                        );
+                        self.remotes.push((remote, data));
 
                     } else {
                         connection.shutdown().ok();

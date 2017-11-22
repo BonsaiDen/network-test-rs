@@ -25,14 +25,14 @@ enum Message {
 fn client() -> Result<(), IOError> {
 
     // TODO expose tick rate set by server via client
-    // TODO bytes send / received per second for client
 
-    // client.ticks_per_second()
-    // client.ticks()
-    // client.time()
+    // TODO
+    // client.time() -> f64
+    // client.ticks() -> usize
+    // client.ticks_per_second() -> u8
 
-    // client.bytes_sent();
-    // client.bytes_received();
+    // client.bytes_total() -> (usize, usize)
+    // client.bytes_per_second() -> (f64, f64);
     let mut client = Client::<TCP, Message>::new(30);
     client.connect("127.0.0.1:7564", Duration::from_millis(500))?;
 
@@ -63,17 +63,17 @@ fn run_server() -> Result<(), IOError> {
     struct Data;
 
     // TODO configure tick rate only on server and transmit to client behind the scenes
-    // TODO bytes send / received per second for remotes and server total
 
-    // server.ticks_per_second()
-    // server.ticks()
-    // server.time()
+    // TODO
+    // server.time() -> f64
+    // server.ticks() -> usize
+    // server.ticks_per_second() -> u8
 
-    // server.bytes_sent();
-    // server.bytes_received();
+    // server.bytes_total() -> (usize, usize)
+    // server.bytes_per_second() -> (f64, f64);
 
-    // r.bytes_sent();
-    // r.bytes_received();
+    // remote.bytes_total() -> (usize, usize)
+    // remote.bytes_per_second() -> (f64, f64);
 
     let mut server = Server::<TCP, Message, Data>::new(30);
     server.bind("0.0.0.0:7564")?;

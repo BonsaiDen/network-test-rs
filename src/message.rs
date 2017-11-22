@@ -25,7 +25,8 @@ pub trait Message: Serialize + DeserializeOwned {}
 #[derive(Debug, Serialize, Deserialize)]
 pub enum InternalMessage {
     Ping(u8, u64),
-    Pong(u8, u64, u64)
+    Pong(u8, u64, u64),
+    //Configure(u8)
 }
 
 
